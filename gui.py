@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from proj1 import load_ogg,synthesize_vowel,save
 from contextlib import contextmanager
-import sys, os
+import sys,os
 import numpy as np
 
 # Supress messages on module load
@@ -32,9 +32,9 @@ class Application(tk.Frame):
 
     def create_widgets(self):
 
-        # Display sample rate
-        self.samplerate_label = tk.Label(self,text='Sample rate is %d' % self.samplerate)
-        self.samplerate_label.pack()
+        # # Display sample rate
+        # self.samplerate_label = tk.Label(self,text='Sample rate is %d' % self.samplerate)
+        # self.samplerate_label.pack()
 
         # Choose vowel sound
         self.vowel_label = tk.Label(self,text='Select Vowel Sound:').pack()
@@ -74,10 +74,10 @@ class Application(tk.Frame):
         dur = float(self.duration_entry.get())
 
         # Do the thing
-        synth = synthesize_vowel(self.data,vowel,freq=freq,duration=dur,samplerate=self.samplerate)
+        synth,samplerate0 = synthesize_vowel(self.data,vowel,freq=freq,duration=dur,samplerate=self.samplerate)
 
         # Save the result, then play it
-        filename = save('%s_synth.ogg' % vowel,synth,samplerate=self.samplerate)
+        filename = save('%s_synth.ogg' % vowel,synth,samplerate=samplerate0)
         pg.mixer.Sound(filename).play()
 
 
