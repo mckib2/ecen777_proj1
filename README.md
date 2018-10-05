@@ -1,6 +1,6 @@
 ## Installation
 
-Run `python3 -m pip -r requirements.txt` to install dependencies.
+Using Python 3 (will probably not work using Python 2), run `python -m pip install -r requirements.txt` to install dependencies.
 
 ## GUI
 
